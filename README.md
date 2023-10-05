@@ -11,6 +11,13 @@
   </ol>
 </details>
 
+<p align="center">
+	<b>PlayGround</b>
+</p>
+<p align="center">
+	<img src="media/playground.png" width="663" height="727"/>
+</p>
+
 ## About
 
 ### Design aspects of system

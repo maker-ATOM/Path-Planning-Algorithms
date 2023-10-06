@@ -5,7 +5,7 @@ Panels:
     Property Tree Widget:
       Expanded:
         - /Map1
-        - /PointStamped2
+        - /Map2
       Splitter Ratio: 0.5
     Tree Height: 720
   - Class: rviz_common/Selection
@@ -29,6 +29,75 @@ Panels:
 Visualization Manager:
   Class: ""
   Displays:
+    - Alpha: 0.5
+      Cell Size: 1
+      Class: rviz_default_plugins/Grid
+      Color: 160; 160; 164
+      Enabled: true
+      Line Style:
+        Line Width: 0.029999999329447746
+        Value: Lines
+      Name: Grid
+      Normal Cell Count: 0
+      Offset:
+        X: 5
+        Y: 5
+        Z: 0
+      Plane: XY
+      Plane Cell Count: 10
+      Reference Frame: <Fixed Frame>
+      Value: true
+    - Alpha: 0.20000000298023224
+      Class: rviz_default_plugins/PointStamped
+      Color: 204; 41; 204
+      Enabled: true
+      History Length: 1
+      Name: PointStamped
+      Radius: 0.5
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /goal_point
+      Value: true
+    - Alpha: 0.20000000298023224
+      Class: rviz_default_plugins/PointStamped
+      Color: 0; 204; 204
+      Enabled: true
+      History Length: 1
+      Name: PointStamped
+      Radius: 0.5
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /initial_point
+      Value: true
+    - Alpha: 0.5
+      Class: rviz_default_plugins/Map
+      Color Scheme: costmap
+      Draw Behind: false
+      Enabled: true
+      Name: Map
+      Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        Filter size: 10
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /algo_viz
+      Update Topic:
+        Depth: 5
+        Durability Policy: Volatile
+        History Policy: Keep Last
+        Reliability Policy: Reliable
+        Value: /algo_viz_updates
+      Use Timestamp: false
+      Value: true
     - Alpha: 1
       Class: rviz_default_plugins/Map
       Color Scheme: costmap
@@ -49,54 +118,6 @@ Visualization Manager:
         Reliability Policy: Reliable
         Value: /map_viz_updates
       Use Timestamp: false
-      Value: true
-    - Alpha: 0.5
-      Cell Size: 1
-      Class: rviz_default_plugins/Grid
-      Color: 160; 160; 164
-      Enabled: true
-      Line Style:
-        Line Width: 0.029999999329447746
-        Value: Lines
-      Name: Grid
-      Normal Cell Count: 0
-      Offset:
-        X: 5
-        Y: 5
-        Z: 0
-      Plane: XY
-      Plane Cell Count: 10
-      Reference Frame: <Fixed Frame>
-      Value: true
-    - Alpha: 1
-      Class: rviz_default_plugins/PointStamped
-      Color: 204; 41; 204
-      Enabled: true
-      History Length: 1
-      Name: PointStamped
-      Radius: 0.20000000298023224
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /goal_point
-      Value: true
-    - Alpha: 1
-      Class: rviz_default_plugins/PointStamped
-      Color: 0; 204; 204
-      Enabled: true
-      History Length: 1
-      Name: PointStamped
-      Radius: 0.20000000298023224
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /initial_point
       Value: true
   Enabled: true
   Global Options:
@@ -143,21 +164,26 @@ Visualization Manager:
   Value: true
   Views:
     Current:
-      Angle: 0
-      Class: rviz_default_plugins/TopDownOrtho
+      Class: rviz_default_plugins/Orbit
+      Distance: 14.215984344482422
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
+      Focal Point:
+        X: 5.018670558929443
+        Y: 4.990950107574463
+        Z: -0.004982867278158665
+      Focal Shape Fixed Size: false
+      Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false
       Name: Current View
       Near Clip Distance: 0.009999999776482582
-      Scale: 81.04315185546875
+      Pitch: -1.5697963237762451
       Target Frame: <Fixed Frame>
-      Value: TopDownOrtho (rviz_default_plugins)
-      X: 4.969691753387451
-      Y: 4.998223781585693
+      Value: Orbit (rviz_default_plugins)
+      Yaw: 4.714000225067139
     Saved: ~
 Window Geometry:
   Displays:

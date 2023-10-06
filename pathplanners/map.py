@@ -2,7 +2,6 @@
 
 import rclpy
 from rclpy.node import Node
-from std_msgs.msg import UInt8MultiArray
 from nav_msgs.msg import OccupancyGrid
 from geometry_msgs.msg import PointStamped
 from custom_interfaces.msg import AdjacencyList, Neighbors, Point
@@ -52,7 +51,7 @@ class MetaData(Node):
             [0,0],[1,0] . . . 
             [1,0]           .
               .             .
-              .             .
+              . io            .
               . . . . . . [9,9]
         ]
         """
@@ -71,6 +70,7 @@ class MetaData(Node):
 
         for y in range(my):
             for x in range(mx):
+
                 neighbors = Neighbors()
                 for i in range(4):
                     # new
@@ -85,6 +85,8 @@ class MetaData(Node):
                 self.adj_list.adjacencylist.append(neighbors)
 
         
+
+
         # playground map
         self.map_data = OccupancyGrid()
         self.map_data.header.frame_id = 'map'
@@ -100,12 +102,14 @@ class MetaData(Node):
         self.map_data.info.origin.orientation.w = 1.00
 
         # Assign a value to a specific cell based on init  anf goal pose
-        data_array[int(self.initial_point.point.y - 0.5)][int(self.initial_point.point.x - 0.5)] = 99
-        data_array[int(self.goal_point.point.y - 0.5)][int(self.goal_point.point.x - 0.5)] = 100
+        data_array[int(self.initial_point.point.y - 0.5)][int(self.initial_point.point.x - 0.5)] = -127
+        data_array[int(self.goal_point.point.y - 0.5)][int(self.goal_point.point.x - 0.5)] = -38
         
         # convert 2D array to single list
         for list in data_array:
             self.map_data.data.extend(list)
+
+
 
     def master_callback(self):
         # publish data

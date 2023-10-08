@@ -13,19 +13,16 @@
 	<b>PlayGround</b>
 </p>
 <p align="center">
-	<img src="media/playground.png" width="663" height="727"/>
+	<img src="media/playground.png" width="500" height="500"/>
 </p>
 
 
 
 TO Do:
-Service based - iNterseting we have sderive presetn
-changer dx, dy list structure ifrst top left botto n=m then right
-break while loop of dfs on find the point
-Store previously visited ndoe and draw the path
+Store previously visited node and draw the path
 
-refer for psudocode
-https://www.youtube.com/watch?v=KiCBXu4P-2Y&list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P&index=6
+<!-- refer for psudocode
+https://www.youtube.com/watch?v=KiCBXu4P-2Y&list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P&index=6 -->
 
 
 
@@ -44,19 +41,29 @@ Launches rviz2 and map_node
 ```python
 Publishes 
     Map with obstacles
-    and init and goal pose
-    # Other data elements common to algorithms
+    initial and goal pose embedded within the map
 
-    map data stored in 2d matrix for easy of understyanding on code
+    map data stored is first stored in 2d matrix represented as x, y
 
-    instead of adj list trnasmitting driectly ref map via serivice which has all obstacle, init andf goal pose.
-    convert the map data to OccupancyGrid and fill in the init and goal pose for riviz
+    Instead of adjacency list sharing the reference map data via
+    GetMap service within the nav_msgs package
+```
+
+**algo_nodes**
+
+```python
+Waits for the GetMap service and requests the service for map with obstacles with initial and goal pose.
+Not using sync service, but instead using a flag to wait for the response.
+
+Service callback method converts the data into 3D matrix for manipulation.
+
+Within the timer loop BFS traversal is performed and each node is marked visited denoted in the map itself. After each iteration of master loop color of visited cells is increased in spectrum for visualization.
 ```
 
 ### Color Scheme of CostMap: 
 
 ```python
--128 to -1 => RED to YELLOW
+-128 to -2 => RED to YELLOW
 -1 => GREY
 0 => BLACK
 1 to 98 => BLUE to RED
@@ -74,8 +81,9 @@ Publishes
 	<b>Breadth First Search</b>
 </p>
 <p align="center">
-	<img src="/media/bfs.gif" width="556" height="564"/>
+	<img src="/media/bfs.gif" width="526" height="594"/>
 </p>
+
 - Depth First Search
 
 ### Grid-based search algorithms

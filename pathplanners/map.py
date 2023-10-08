@@ -74,8 +74,8 @@ class MetaData(Node):
         self.map_data.info.origin.orientation.w = 1.00
 
         # Assign a value to a specific cell based on init  anf goal pose
-        data_array[self.initial_point_y][self.initial_point_x] = -127
-        data_array[self.goal_point_y][self.goal_point_x] = -38
+        data_array[self.initial_point_y][self.initial_point_x] = -2
+        data_array[self.goal_point_y][self.goal_point_x] = 1
         
         # convert 2D array to single list
         for list in data_array:

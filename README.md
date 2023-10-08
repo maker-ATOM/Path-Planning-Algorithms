@@ -4,10 +4,8 @@
   <summary>Table of Contents</summary>
   <ol>
     <li><a href="#About">About</a></li>
-    <li><a href="#Using-this-Project">Using this Project</a></li>
     <li><a href="#Description-of-Algorithms">Description of Algorithms</a></li>
-    <li><a href="#Project-Status">Project Status</a></li>
-    <li><a href="#Project-Upgradation">Project Upgradation</a></li>
+    <li><a href="#Using-this-Project">Using this Project</a></li>
   </ol>
 </details>
 
@@ -17,6 +15,19 @@
 <p align="center">
 	<img src="media/playground.png" width="663" height="727"/>
 </p>
+
+
+
+TO Do:
+Service based - iNterseting we have sderive presetn
+changer dx, dy list structure ifrst top left botto n=m then right
+break while loop of dfs on find the point
+Store previously visited ndoe and draw the path
+
+refer for psudocode
+https://www.youtube.com/watch?v=KiCBXu4P-2Y&list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P&index=6
+
+
 
 ## About
 
@@ -33,16 +44,12 @@ Launches rviz2 and map_node
 ```python
 Publishes 
     Map with obstacles
-    PointStamped message containing initial and goal point
+    and init and goal pose
     # Other data elements common to algorithms
 
-    init and goal pose represent by PointStamped ros msg
-    published on topic so to visualize in rivz2
     map data stored in 2d matrix for easy of understyanding on code
-    convert the 2d array with walls to adj lust
-    adj list is tuple of x,y within a list of list
-        so using custom interface defined in the packge custom interface within ros learning repo
-        not using dict for ease of algorithm
+
+    instead of adj list trnasmitting driectly ref map via serivice which has all obstacle, init andf goal pose.
     convert the map data to OccupancyGrid and fill in the init and goal pose for riviz
 ```
 
@@ -131,4 +138,9 @@ To see individual algorithms in action, run individual scripts.
 ```
 ros2 run pathplanners <algorithm_name>
 ```
+
+Executable list
+- bfs
+
+Replace these with <algorithm_name> to run the specific algorithm
 

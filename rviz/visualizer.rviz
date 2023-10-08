@@ -4,6 +4,7 @@ Panels:
     Name: Displays
     Property Tree Widget:
       Expanded:
+        - /Grid1
         - /Map1
         - /Map2
       Splitter Ratio: 0.5
@@ -40,42 +41,12 @@ Visualization Manager:
       Name: Grid
       Normal Cell Count: 0
       Offset:
-        X: 5
-        Y: 5
+        X: 10
+        Y: 10
         Z: 0
       Plane: XY
-      Plane Cell Count: 10
+      Plane Cell Count: 20
       Reference Frame: <Fixed Frame>
-      Value: true
-    - Alpha: 0.20000000298023224
-      Class: rviz_default_plugins/PointStamped
-      Color: 204; 41; 204
-      Enabled: true
-      History Length: 1
-      Name: PointStamped
-      Radius: 0.5
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /goal_point
-      Value: true
-    - Alpha: 0.20000000298023224
-      Class: rviz_default_plugins/PointStamped
-      Color: 0; 204; 204
-      Enabled: true
-      History Length: 1
-      Name: PointStamped
-      Radius: 0.5
-      Topic:
-        Depth: 5
-        Durability Policy: Volatile
-        Filter size: 10
-        History Policy: Keep Last
-        Reliability Policy: Reliable
-        Value: /initial_point
       Value: true
     - Alpha: 0.5
       Class: rviz_default_plugins/Map
@@ -165,16 +136,16 @@ Visualization Manager:
   Views:
     Current:
       Class: rviz_default_plugins/Orbit
-      Distance: 14.215984344482422
+      Distance: 26.478158950805664
       Enable Stereo Rendering:
         Stereo Eye Separation: 0.05999999865889549
         Stereo Focal Distance: 1
         Swap Stereo Eyes: false
         Value: false
       Focal Point:
-        X: 5.018670558929443
-        Y: 4.990950107574463
-        Z: -0.004982867278158665
+        X: 9.915241241455078
+        Y: 9.815261840820312
+        Z: -0.009799308143556118
       Focal Shape Fixed Size: false
       Focal Shape Size: 0.05000000074505806
       Invert Z Axis: false

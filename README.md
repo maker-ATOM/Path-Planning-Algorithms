@@ -74,6 +74,7 @@ Service callback method converts the data into 2D matrix for manipulation.
 
 Within the timer loop BFS traversal is performed and each node is marked visited denoted in the map itself. 
 After each iteration of master loop color of visited cells is increased in spectrum for visualization.
+
 Path is back tracked using `parent` attribute and path is generated.
 ```
 
@@ -107,6 +108,12 @@ Explored area has a gradient from YELLOW to BLUE for each iteration.
 <p align="center">
 	<img src="/media/bfs.gif" width="750" height="817"/>
 </p>
+
+```python
+Plunges depth first into into a graph without regard for which edge it take next
+until it cannot go further at which point it backtracks and continues.
+
+```
 
 
 <p align="center">
@@ -199,7 +206,9 @@ ros2 run pathplanners <algorithm_name>
 ```
 
 Executable list
-- bfs
 
+```python
+- bfs
+```
 Replace these with <algorithm_name> to run the specific algorithm
 

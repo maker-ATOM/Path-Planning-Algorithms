@@ -212,3 +212,30 @@ Executable list
 ```
 Replace these with <algorithm_name> to run the specific algorithm
 
+
+## SiteMap
+
+```python
+├── launch
+│   └── bringup.launch.py
+│
+├── media
+│   ├── bfs.gif
+│   ├── bfs.webm
+│   └── playground.png
+│
+├── pathplanners
+│   ├── breadthfirstsearch.py
+│   ├── __init__.py
+│   ├── map.py
+│
+├── rviz
+│   └── visualizer.rviz
+│
+├── README.md
+│
+├── package.xml
+├── setup.cfg
+└── setup.py
+
+```

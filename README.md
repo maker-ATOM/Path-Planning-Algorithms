@@ -1,4 +1,4 @@
-# Path-Planner-with-ROS2
+# Path-Planning-Algorithms-with-ROS2
 
 <details open="open">
   <summary>Table of Contents</summary>
@@ -19,7 +19,11 @@
 
 
 TO Do:
-Store previously visited node and draw the path
+
+Store previously visited node and draw the path.
+Potnetial fucntion for the complex algo 
+    Explore neighbours
+        Takes a node and returns all its neighbour
 
 <!-- refer for psudocode
 https://www.youtube.com/watch?v=KiCBXu4P-2Y&list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P&index=6 -->
@@ -29,6 +33,9 @@ https://www.youtube.com/watch?v=KiCBXu4P-2Y&list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km
 ## About
 
 ### Design aspects of system
+
+A `map_node` which provides the preliminary data such as map with obstacle, initial and goal pose.
+Each algorithm can be executed residing within the individual script.
 
 **bringup.launch.py**
 
@@ -57,7 +64,8 @@ Not using sync service, but instead using a flag to wait for the response.
 
 Service callback method converts the data into 3D matrix for manipulation.
 
-Within the timer loop BFS traversal is performed and each node is marked visited denoted in the map itself. After each iteration of master loop color of visited cells is increased in spectrum for visualization.
+Within the timer loop BFS traversal is performed and each node is marked visited denoted in the map itself. 
+After each iteration of master loop color of visited cells is increased in spectrum for visualization.
 ```
 
 ### Color Scheme of CostMap: 

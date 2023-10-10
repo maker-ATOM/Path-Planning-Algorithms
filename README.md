@@ -110,7 +110,7 @@ Explored area has a gradient from YELLOW to BLUE for each iteration.
 </p>
 
 ```python
-Plunges depth first into into a graph without regard for which edge it take next
+Plunges depth first into a graph without regard for which edge it take next
 until it cannot go further at which point it backtracks and continues.
 
 ```

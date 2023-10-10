@@ -9,21 +9,13 @@
   </ol>
 </details>
 
-<p align="center">
-	<b>PlayGround</b>
-</p>
-<p align="center">
-	<img src="media/playground.png" width="500" height="500"/>
-</p>
 
+**ToDo:**
 
-
-TO Do:
-
-Store previously visited node and draw the path.
-Potnetial fucntion for the complex algo 
-    Explore neighbours
-        Takes a node and returns all its neighbour
+- Potential function for the complex algo 
+    - Explore neighbors
+        - Takes a node and returns all its neighbor
+- Should this be encapsulated in base Algorithm class?
 
 <!-- refer for psudocode
 https://www.youtube.com/watch?v=KiCBXu4P-2Y&list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km93P&index=6 -->
@@ -34,65 +26,92 @@ https://www.youtube.com/watch?v=KiCBXu4P-2Y&list=PLDV1Zeh2NRsDGO4--qE8yH72HFL1Km
 
 ### Design aspects of system
 
-A `map_node` which provides the preliminary data such as map with obstacle, initial and goal pose.
-Each algorithm can be executed residing within the individual script.
+Preliminary data such as map with obstacle, initial and goal position, common to all algorithms will be provided with node - `map_node`
+
+Each algorithms can be executed using its own python node.
+
+Complex algorithms which requires functionalities present in simpler can be derived easily as the codebase it OOP based.
+
+<p align="center">
+	<b>PlayGround</b>
+</p>
+<p align="center">
+	<img src="media/playground.png" width="500" height="500"/>
+</p>
+
 
 **bringup.launch.py**
 
 ```python
-Launches rviz2 and map_node
+Launches rviz2 for visualization of algorithms and 
+         map_node which provided the preliminary data
 ```
 
 **map_node**
 
 ```python
+Has the preliminary map defined.
 Publishes 
     Map with obstacles
     initial and goal pose embedded within the map
 
-    map data stored is first stored in 2d matrix represented as x, y
+    map data is first stored in 2d matrix represented as x, y
 
-    Instead of adjacency list sharing the reference map data via
-    GetMap service within the nav_msgs package
+Instead of adjacency list, the preliminary map is transmitted.
+    
+Serves service `get_map` requested by individual algorithms for preliminary map.
+Since this wont be changing over time and will be required only once service has been used,
+instead of topic.
 ```
 
 **algo_nodes**
 
 ```python
 Waits for the GetMap service and requests the service for map with obstacles with initial and goal pose.
-Not using sync service, but instead using a flag to wait for the response.
+Instead of using sync service, using a flag to wait for the response.
 
-Service callback method converts the data into 3D matrix for manipulation.
+Service callback method converts the data into 2D matrix for manipulation.
 
 Within the timer loop BFS traversal is performed and each node is marked visited denoted in the map itself. 
 After each iteration of master loop color of visited cells is increased in spectrum for visualization.
+Path is back tracked using `parent` attribute and path is generated.
 ```
+
 
 ### Color Scheme of CostMap: 
 
 ```python
 -128 to -2 => RED to YELLOW
--1 => GREY
-0 => BLACK
-1 to 98 => BLUE to RED
-99 => CYAN
-100 => PINK
+-1         => GREY
+0          => BLACK
+1 to 98    => BLUE to RED
+99         => CYAN
+100        => PINK
 101 to 127 => GREEN
 ```
 
-## Description of Algorithms
+```python
+YELLOW => START POINT
+BLUE   => END POINT
+GREEN  => GENERATED PATH
+Explored area has a gradient from YELLOW to BLUE for each iteration.
+```
+
+## Algorithms
 
 ### Fundamentals
-
 
 <p align="center">
 	<b>Breadth First Search</b>
 </p>
 <p align="center">
-	<img src="/media/bfs.gif" width="526" height="594"/>
+	<img src="/media/bfs.gif" width="750" height="817"/>
 </p>
 
-- Depth First Search
+
+<p align="center">
+	<b>Depth  First Search</b>
+</p>
 
 ### Grid-based search algorithms
 - dijkstra
@@ -100,11 +119,35 @@ After each iteration of master loop color of visited cells is increased in spect
 - A*
 - D*
 - Uniform Cost Search
+- Best-First Searching
+- Dijkstra's
+- A*
+- Bidirectional A*
+- Anytime Repairing A*
+- Learning Real-time A* (LRTA*)
+- Real-time Adaptive A* (RTAA*)
+- Lifelong Planning A* (LPA*)
+- Dynamic A* (D*)
+- D* Lite
+- Anytime D*
+-  Dynamic Window Approach.
 
 ### Sampling-based search algorithms
 - Rapidly-Exploring Random Trees RRT
 - RRT*
-Probabilistic Roadmap (PRM)
+- Probabilistic Roadmap (PRM)
+- RRT
+- RRT-Connect
+- Extended-RRT
+- Dynamic-RRT
+- RRT*
+- Informed RRT*
+- RRT* Smart
+- Anytime RRT*
+- Closed-Loop RRT*
+- Spline-RRT*
+- Fast Marching Trees (FMT*)
+- Batch Informed Trees (BIT*)
 
 ### Potential Field Algorithms
 

@@ -105,20 +105,30 @@ Explored area has a gradient from YELLOW to BLUE for each iteration.
 <p align="center">
 	<b>Breadth First Search</b>
 </p>
+
 <p align="center">
 	<img src="/media/bfs.gif" width="750" height="817"/>
+</p>
+
+
+```python
+Explores the neighbor nodes first, before moving to the next level of neighbors.
+Utilizes queue to store the node yet to be visited.
+```
+<p align="center">
+	<b>Depth First Search</b>
 </p>
 
 ```python
 Plunges depth first into a graph without regard for which edge it take next
 until it cannot go further at which point it backtracks and continues.
-
 ```
 
-
 <p align="center">
-	<b>Depth  First Search</b>
+	<b>Minimal Spanning Tree</b>
 </p>
+
+
 
 ### Grid-based search algorithms
 - dijkstra
@@ -127,7 +137,6 @@ until it cannot go further at which point it backtracks and continues.
 - D*
 - Uniform Cost Search
 - Best-First Searching
-- Dijkstra's
 - A*
 - Bidirectional A*
 - Anytime Repairing A*

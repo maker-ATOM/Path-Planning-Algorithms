@@ -18,36 +18,25 @@ class MetaData(Node):
         self.timer = self.create_timer(self.timer_period, self.master_callback)
         
         # initial start pose
-        self.initial_point_x = 3
-        self.initial_point_y = 16
+        self.initial_point_x = 8
+        self.initial_point_y = 41
 
         # goal pose
-        self.goal_point_x = 16
-        self.goal_point_y = 3
+        self.goal_point_x = 41
+        self.goal_point_y = 8
 
         # 2D array of the map
-        data_array = [
-            [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-            [  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0],
-            [  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0],
-            [  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0],
-            [  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0],
-            [  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0],
-            [  0, -1, -1, -1, -1, -1, -1,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0],
-            [  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0],
-            [  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0],
-            [  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0], 
-            [  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0],
-            [  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0],
-            [  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0],
-            [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0, -1, -1, -1, -1, -1, -1,  0],
-            [  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0],
-            [  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0],
-            [  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0],
-            [  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0],
-            [  0, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1,  0],
-            [  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0,  0], 
-        ]
+        rows = 50
+        cols = 50
+
+        data_array = [[0 for _ in range(rows)] for _ in range(cols)]
+        
+        for i in range(1, rows - 1):
+            data_array[i][1:-1] = [-1] * (cols - 2)
+        
+
+        data_array[int(rows/3)][-34:-1] = [0] * 33
+        data_array[int(2 * rows/3)][1:34] = [0] * 33
 
         """
         data_array = [
@@ -55,7 +44,7 @@ class MetaData(Node):
             [1,0]           .
               .             .
               .             .
-              . . . . .  [19,19]
+              . . . . .  [49,49]
         ]
         """
      
@@ -63,8 +52,8 @@ class MetaData(Node):
         self.map_data = OccupancyGrid()
         self.map_data.header.frame_id = 'map'
         self.map_data.info.resolution = 1.0
-        self.map_data.info.width = 20
-        self.map_data.info.height = 20
+        self.map_data.info.width = rows
+        self.map_data.info.height = cols
         self.map_data.info.origin.position.x = 0.0
         self.map_data.info.origin.position.y = 0.0
         self.map_data.info.origin.position.z = 0.0

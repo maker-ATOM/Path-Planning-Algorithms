@@ -20,7 +20,7 @@ class BFS(Node):
         self.FREE_SPACE = -1
         self.START = -2
         self.GOAL = 1
-        self.TRAVERSAL_COLOR_INCREMENT = 0.78
+        self.TRAVERSAL_COLOR_INCREMENT = 0.104
         self.FINAL_COLOR = -127
         self.TRAVERSAL_COLOR_UPDATE = 98
 
@@ -50,7 +50,7 @@ class BFS(Node):
         self.get_map_service = self.create_client(GetMap, 'get_map') 
 
         # timer to call master_callback repetitively
-        self.timer_period = 0.05  # seconds
+        self.timer_period = 0.005  # seconds
         self.timer = self.create_timer(self.timer_period, self.master_callback)
          
         # Wait until service is available 
@@ -104,8 +104,8 @@ class BFS(Node):
     def master_callback(self):
 
         # direction vector to generate neighbors
-        dx = [0, -1, 0, 1]
-        dy = [1, 0, -1, 0]
+        dx = [0, 1,  0, -1]
+        dy = [1, 0, -1,  0]
 
         if self.received_data:
             # do traversal 
@@ -116,7 +116,7 @@ class BFS(Node):
                 # self.map[node.y][node.x] = int(self.color)
 
                 for i in range(0, 4):
-                    # generate new neighbos
+                    # generate new neighbors
                     neighbor = Point()
                     neighbor.x = node.x + dx[i]
                     neighbor.y = node.y + dy[i]

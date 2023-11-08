@@ -107,7 +107,7 @@ Explored area has a gradient from YELLOW to BLUE for each iteration.
 </p>
 
 <p align="center">
-	<img src="/media/bfs.gif" width="536" height="584"/>
+	<img src="/media/bfs_b.gif" width="536" height="584"/>
 </p>
 
 

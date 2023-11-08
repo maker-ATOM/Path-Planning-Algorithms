@@ -27,6 +27,7 @@ setup(
         'console_scripts': [
             "map_node = pathplanners.map:main",
             "bfs = pathplanners.breadthfirstsearch:main"
+            "dijkstra = pathplanners.dijkstra:main"
         ],
     },
 )
